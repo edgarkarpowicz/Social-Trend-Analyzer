@@ -1,0 +1,108 @@
+@startuml Social_Trend_Analyzer_Components
+
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f1f5f9
+skinparam defaultFontSize 11
+skinparam defaultFontName Segoe UI
+
+skinparam component {
+    BackgroundColor #1e293b
+    BorderColor #475569
+    ArrowColor #6366f1
+    FontColor #f1f5f9
+    StereotypeFontColor #06b6d4
+}
+
+skinparam package {
+    BackgroundColor #334155
+    BorderColor #475569
+    FontColor #f1f5f9
+}
+
+skinparam database {
+    BackgroundColor #1e293b
+    BorderColor #8b5cf6
+    FontColor #f1f5f9
+}
+
+skinparam cloud {
+    BackgroundColor #1e293b
+    BorderColor #06b6d4
+    FontColor #f1f5f9
+}
+
+skinparam note {
+    BackgroundColor #1e293b
+    BorderColor #8b5cf6
+    FontColor #e2e8f0
+}
+
+title Social Trend Analyzer - Component Diagram\n<size:10><color:#94a3b8>Aplicación de escritorio para el análisis inteligente de tendencias en redes sociales</color></size>
+
+package "Application Layer" #334155 {
+    component [<color:#06b6d4>main.py</color>\n<color:#94a3b8>SocialTrendAnalyzer</color>] as Main #1e293b
+}
+
+package "Business Logic" #334155 {
+    component [<color:#06b6d4>analyzer.py</color>\n<color:#94a3b8>ML & Analytics</color>] as Analyzer #1e293b
+    component [<color:#06b6d4>utils.py</color>\n<color:#94a3b8>Validation & Parsing</color>] as Utils #1e293b
+}
+
+package "Presentation" #334155 {
+    component [<color:#06b6d4>ui_components.py</color>\n<color:#94a3b8>UI Building Blocks</color>] as UI #1e293b
+}
+
+package "Configuration" #334155 {
+    component [<color:#06b6d4>config.py</color>\n<color:#94a3b8>Settings & Styles</color>] as Config #1e293b
+}
+
+database "<color:#8b5cf6>CSV Dataset</color>" as CSV #1e293b
+cloud "<color:#06b6d4>External Libraries</color>\n<color:#94a3b8>Scikit-learn\nPandas\nNumPy\nMatplotlib</color>" as Libs #1e293b
+
+Main -[#6366f1]-> UI : <color:#10b981>creates interface</color>
+Main -[#8b5cf6]-> Analyzer : <color:#10b981>requests analysis</color>
+Main -[#06b6d4]-> Utils : <color:#10b981>validates data</color>
+Main -[#f59e0b]-> Config : <color:#10b981>loads settings</color>
+
+Analyzer -[#6366f1]-> Libs : <color:#94a3b8>uses ML/analytics</color>
+Utils -[#8b5cf6]-> Libs : <color:#94a3b8>uses data processing</color>
+UI -[#06b6d4]-> Libs : <color:#94a3b8>embeds plots</color>
+
+CSV -[#10b981]-> Main : <color:#94a3b8>loads</color>
+
+note right of Main #1e293b
+  <b><color:#06b6d4>Entry Point</color></b>
+  <color:#475569>═══════════════</color>
+  <color:#f1f5f9>• Orchestrates flow
+  • Manages state (df, model)
+  • Handles UI events</color>
+end note
+
+note bottom of Analyzer #1e293b
+  <b><color:#06b6d4>Core Features</color></b>
+  <color:#475569>════════════</color>
+  <color:#f1f5f9>• TF-IDF + LogisticRegression
+  • Stats: users, hashtags, trends
+  • Time-series analysis
+  • Prediction engine</color>
+end note
+
+note left of UI #1e293b
+  <b><color:#06b6d4>Interface Layer</color></b>
+  <color:#475569>═══════════════</color>
+  <color:#f1f5f9>• Dark theme (Slate palette)
+  • Tabs, plots, tooltips
+  • Tutorial dialog
+  • Matplotlib embedding</color>
+end note
+
+note top of Config #1e293b
+  <b><color:#06b6d4>Configuration Hub</color></b>
+  <color:#475569>══════════════════</color>
+  <color:#f1f5f9>• COLOR_SCHEME
+  • MODEL_CONFIG
+  • ANALYSIS_CONFIG
+  • User settings (JSON)</color>
+end note
+
+@enduml

@@ -1,0 +1,258 @@
+@startuml Social_Trend_Analyzer_Architecture
+
+!define ICONURL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master
+
+skinparam backgroundColor #0f172a
+skinparam defaultFontColor #f1f5f9
+skinparam defaultFontSize 11
+skinparam defaultFontName Segoe UI
+
+skinparam class {
+    BackgroundColor #1e293b
+    BorderColor #475569
+    ArrowColor #6366f1
+    FontColor #f1f5f9
+    AttributeFontColor #94a3b8
+    StereotypeFontColor #06b6d4
+}
+
+skinparam package {
+    BackgroundColor #334155
+    BorderColor #475569
+    FontColor #f1f5f9
+}
+
+skinparam note {
+    BackgroundColor #1e293b
+    BorderColor #8b5cf6
+    FontColor #e2e8f0
+}
+
+title Social Trend Analyzer - Architecture Diagram\n<size:10><color:#94a3b8>Análisis de Redes Sociales con Machine Learning</color></size>
+
+package "Main Application" #1e293b {
+    class SocialTrendAnalyzer {
+        <color:#06b6d4><<Tkinter.Tk>></color>
+        --
+        <color:#94a3b8>- df: DataFrame</color>
+        <color:#94a3b8>- model: Pipeline</color>
+        <color:#94a3b8>- settings: Dict</color>
+        <color:#94a3b8>- ui_builder: UIBuilder</color>
+        <color:#94a3b8>- focus_hashtag: str</color>
+        --
+        <color:#10b981>+ on_load_csv()</color>
+        <color:#10b981>+ on_show_stats()</color>
+        <color:#10b981>+ on_plot_trend()</color>
+        <color:#10b981>+ on_train_flow()</color>
+        <color:#10b981>+ on_predict()</color>
+        <color:#f59e0b>- _process_dataset()</color>
+        <color:#f59e0b>- _do_train()</color>
+    }
+}
+
+package "Configuration Layer" #334155 {
+    class ConfigModule {
+        <color:#06b6d4><<config.py>></color>
+        --
+        <color:#8b5cf6>WINDOW_CONFIG</color>
+        <color:#8b5cf6>MODEL_CONFIG</color>
+        <color:#8b5cf6>ANALYSIS_CONFIG</color>
+        <color:#8b5cf6>COLOR_SCHEME</color>
+        --
+        <color:#10b981>+ load_user_settings()</color>
+        <color:#10b981>+ save_user_settings()</color>
+        <color:#10b981>+ get_style_configurations()</color>
+    }
+}
+
+package "Data Processing" #334155 {
+    class UtilsModule {
+        <color:#06b6d4><<utils.py>></color>
+        --
+        <color:#10b981>+ validate_dataset()</color>
+        <color:#10b981>+ parse_hashtags_cell()</color>
+        <color:#10b981>+ build_label_if_missing()</color>
+        <color:#10b981>+ compose_text_features()</color>
+        <color:#10b981>+ validate_likes_input()</color>
+        <color:#10b981>+ validate_text_input()</color>
+        --
+        <color:#94a3b8>Uses: Pandas, NumPy, AST</color>
+    }
+}
+
+package "Analytics & ML Engine" #334155 {
+    class AnalyzerModule {
+        <color:#06b6d4><<analyzer.py>></color>
+        --
+        <color:#10b981>+ compute_basic_stats()</color>
+        <color:#f59e0b>  → Top users, hashtags</color>
+        <color:#f59e0b>  → NumPy metrics</color>
+        <color:#10b981>+ compute_hashtag_trend()</color>
+        <color:#f59e0b>  → Time-series pivot</color>
+        <color:#10b981>+ train_text_model()</color>
+        <color:#f59e0b>  → TF-IDF vectorization</color>
+        <color:#f59e0b>  → LogisticRegression</color>
+        <color:#10b981>+ predict_with_model()</color>
+        <color:#f59e0b>  → Returns: class + confidence</color>
+        --
+        <color:#94a3b8>Uses: Scikit-learn, Pandas, NumPy</color>
+    }
+}
+
+package "UI Components" #334155 {
+    class UIBuilder {
+        <color:#06b6d4><<ui_components.py>></color>
+        --
+        <color:#10b981>+ build_main_ui()</color>
+        <color:#f59e0b>- _build_header()</color>
+        <color:#f59e0b>- _build_toolbar()</color>
+        <color:#f59e0b>- _build_main_panel()</color>
+        <color:#f59e0b>- _build_tabs()</color>
+        <color:#f59e0b>- _build_plot_area()</color>
+        <color:#f59e0b>- _build_status_bar()</color>
+    }
+    
+    class TutorialDialog {
+        <color:#06b6d4><<Toplevel>></color>
+        --
+        <color:#94a3b8>- step: int</color>
+        <color:#94a3b8>- on_start: Callable</color>
+        --
+        <color:#10b981>+ next_step()</color>
+        <color:#10b981>+ prev_step()</color>
+        <color:#f59e0b>- _render_step()</color>
+    }
+    
+    class UIUtils {
+        <color:#06b6d4><<Static Methods>></color>
+        --
+        <color:#10b981>+ populate_tree()</color>
+        <color:#10b981>+ clear_tree()</color>
+        <color:#10b981>+ show_info_dialog()</color>
+        <color:#10b981>+ update_combobox_values()</color>
+    }
+    
+    class Tooltip {
+        --
+        <color:#94a3b8>- widget: Widget</color>
+        <color:#94a3b8>- text: str</color>
+        --
+        <color:#10b981>+ show()</color>
+        <color:#10b981>+ hide()</color>
+    }
+}
+
+package "External Libraries" #475569 {
+    class Pandas {
+        <color:#06b6d4><<DataFrame Operations>></color>
+        --
+        • CSV loading
+        • GroupBy aggregations
+        • Pivot tables
+        • Time-series handling
+    }
+    
+    class NumPy {
+        <color:#06b6d4><<Numerical Computing>></color>
+        --
+        • Statistical calculations
+        • Array operations
+        • Percentile computations
+    }
+    
+    class ScikitLearn {
+        <color:#06b6d4><<Machine Learning>></color>
+        --
+        • TfidfVectorizer
+        • LogisticRegression
+        • train_test_split
+        • Metrics (accuracy, CM)
+    }
+    
+    class Matplotlib {
+        <color:#06b6d4><<Visualization>></color>
+        --
+        • Figure/Axes plotting
+        • FigureCanvasTkAgg
+        • Embedded in Tkinter
+    }
+    
+    class Tkinter {
+        <color:#06b6d4><<GUI Framework>></color>
+        --
+        • Tk/Toplevel windows
+        • TTK themed widgets
+        • Event handling
+    }
+}
+
+' Relationships - Main Flow
+SocialTrendAnalyzer "1" *-- "1" UIBuilder : contains
+SocialTrendAnalyzer ..> ConfigModule : <<uses>>
+SocialTrendAnalyzer ..> UtilsModule : <<validates>>
+SocialTrendAnalyzer ..> AnalyzerModule : <<computes>>
+
+UIBuilder "1" *-- "1" TutorialDialog : creates
+UIBuilder ..> UIUtils : <<uses>>
+UIBuilder "1" *-- "*" Tooltip : applies
+
+' Data Flow
+UtilsModule ..> Pandas : <<processes>>
+UtilsModule ..> NumPy : <<calculates>>
+AnalyzerModule ..> Pandas : <<analyzes>>
+AnalyzerModule ..> NumPy : <<computes>>
+AnalyzerModule ..> ScikitLearn : <<trains>>
+
+' UI Framework
+SocialTrendAnalyzer --|> Tkinter : extends
+TutorialDialog --|> Tkinter : extends
+UIBuilder ..> Matplotlib : <<embeds>>
+UIBuilder ..> Tkinter : <<constructs>>
+
+' Notes for key workflows
+note right of SocialTrendAnalyzer
+  <b>Main Event Loop</b>
+  ══════════════════
+  1. User loads CSV
+  2. Validates with utils
+  3. Shows stats/trends
+  4. Trains ML model
+  5. Makes predictions
+end note
+
+note bottom of AnalyzerModule
+  <b>ML Pipeline</b>
+  ════════════
+  Text + Hashtags
+       ↓
+  TF-IDF (1-2 grams)
+       ↓
+  LogisticRegression
+       ↓
+  Prediction (alta/baja)
+end note
+
+note left of UIBuilder
+  <b>UI Structure</b>
+  ═══════════
+  • Header
+  • Toolbar (scrollable)
+  • Tabs (4 views)
+  • Matplotlib canvas
+  • Status bar
+end note
+
+' Workflow annotations
+SocialTrendAnalyzer -[#6366f1]-> UtilsModule : <color:#06b6d4>1. Validate CSV</color>
+UtilsModule -[#6366f1]-> SocialTrendAnalyzer : <color:#10b981>DataFrame</color>
+
+SocialTrendAnalyzer -[#8b5cf6]-> AnalyzerModule : <color:#06b6d4>2. Compute Stats</color>
+AnalyzerModule -[#8b5cf6]-> SocialTrendAnalyzer : <color:#10b981>Stats Dict</color>
+
+SocialTrendAnalyzer -[#06b6d4]-> AnalyzerModule : <color:#06b6d4>3. Train Model</color>
+AnalyzerModule -[#06b6d4]-> SocialTrendAnalyzer : <color:#10b981>Pipeline + Metrics</color>
+
+SocialTrendAnalyzer -[#10b981]-> AnalyzerModule : <color:#06b6d4>4. Predict</color>
+AnalyzerModule -[#10b981]-> SocialTrendAnalyzer : <color:#10b981>Class + Confidence</color>
+
+@enduml

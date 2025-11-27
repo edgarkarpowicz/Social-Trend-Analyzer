@@ -1,0 +1,101 @@
+user,text,hashtags,likes,timestamp
+@leo,La inteligencia artificial está cambiando el mundo,#nlp,62,2025-10-08 04:00:00
+@leo,La inteligencia artificial está cambiando el mundo,#dev #ai #cloud,8,2025-10-01 02:00:00
+@maria,Reflexiones sobre el futuro del machine learning,#trend #python #ml,183,2025-10-21 22:00:00
+@sofia,Me encanta programar y descubrir nuevas librerías,#science,150,2025-10-09 00:00:00
+@maria,Me encanta programar y descubrir nuevas librerías,#nlp #data,55,2025-10-11 03:00:00
+@lucas,Me encanta programar y descubrir nuevas librerías,#tech,88,2025-10-20 08:00:00
+@lucas,¿Sabías que puedes analizar tus redes sociales con Python?,#ai #cloud #trend,141,2025-10-10 20:00:00
+@sofia,Explorando nuevas tendencias tecnológicas para 2025,#ml #ai #python,169,2025-10-08 09:00:00
+@lucas,Reflexiones sobre el futuro del machine learning,#cloud,71,2025-10-15 20:00:00
+@juan,Nuevo tutorial sobre análisis de datos con pandas y matplotlib,#tech #ml,171,2025-10-09 22:00:00
+@leo,La inteligencia artificial está cambiando el mundo,#data #dev #ml,41,2025-10-15 12:00:00
+@juan,Comparando modelos de clasificación en scikit-learn,#tech,196,2025-10-02 07:00:00
+@lucas,Explorando nuevas tendencias tecnológicas para 2025,#nlp #ai,54,2025-10-19 22:00:00
+@juan,Reflexiones sobre el futuro del machine learning,#science #cloud #trend,36,2025-10-09 04:00:00
+@maria,Comparando modelos de clasificación en scikit-learn,#nlp #cloud #dev,92,2025-10-08 04:00:00
+@sofia,¿Sabías que puedes analizar tus redes sociales con Python?,#python,28,2025-10-05 20:00:00
+@maria,Me encanta programar y descubrir nuevas librerías,#ai #cloud #dev,152,2025-10-15 16:00:00
+@juan,Comparando modelos de clasificación en scikit-learn,#ai,174,2025-10-18 08:00:00
+@leo,Explorando nuevas tendencias tecnológicas para 2025,#nlp,111,2025-10-06 14:00:00
+@lucas,Participando en la comunidad de desarrolladores open source,#data #dev #ai,160,2025-10-10 20:00:00
+@sofia,Los hashtags pueden ayudar a viralizar contenido en redes,#data,95,2025-10-06 17:00:00
+@sofia,Aprendiendo #python con proyectos reales,#tech #science #python,28,2025-10-12 09:00:00
+@maria,Aprendiendo #python con proyectos reales,#trend,20,2025-10-03 23:00:00
+@ana,La inteligencia artificial está cambiando el mundo,#data #trend #science,140,2025-10-06 08:00:00
+@sofia,Los hashtags pueden ayudar a viralizar contenido en redes,#ml #dev,193,2025-10-07 22:00:00
+@juan,Me encanta programar y descubrir nuevas librerías,#tech #science #dev,30,2025-10-08 07:00:00
+@lucas,Explorando nuevas tendencias tecnológicas para 2025,#trend,141,2025-10-08 18:00:00
+@maria,Aprendiendo #python con proyectos reales,#python,58,2025-10-03 01:00:00
+@juan,La inteligencia artificial está cambiando el mundo,#ml #nlp #science,54,2025-10-18 04:00:00
+@leo,Los hashtags pueden ayudar a viralizar contenido en redes,#science #ml #trend,104,2025-10-07 03:00:00
+@lucas,Me encanta programar y descubrir nuevas librerías,#cloud #trend,119,2025-10-02 21:00:00
+@leo,La inteligencia artificial está cambiando el mundo,#cloud,186,2025-10-11 03:00:00
+@maria,Reflexiones sobre el futuro del machine learning,#dev,114,2025-10-05 13:00:00
+@maria,Participando en la comunidad de desarrolladores open source,#ml #ai,113,2025-10-18 03:00:00
+@lucas,Comparando modelos de clasificación en scikit-learn,#ai,192,2025-10-08 05:00:00
+@ana,¿Sabías que puedes analizar tus redes sociales con Python?,#ml #cloud,15,2025-10-06 12:00:00
+@lucas,Me encanta programar y descubrir nuevas librerías,#science #nlp,108,2025-10-18 21:00:00
+@leo,¿Sabías que puedes analizar tus redes sociales con Python?,#ml,75,2025-10-07 01:00:00
+@sofia,Comparando modelos de clasificación en scikit-learn,#tech,14,2025-10-02 18:00:00
+@ana,Comparando modelos de clasificación en scikit-learn,#data #python #ai,47,2025-10-03 19:00:00
+@lucas,Reflexiones sobre el futuro del machine learning,#ai #ml,148,2025-10-20 01:00:00
+@sofia,La inteligencia artificial está cambiando el mundo,#trend #dev,80,2025-10-09 06:00:00
+@leo,Explorando nuevas tendencias tecnológicas para 2025,#nlp,101,2025-10-05 21:00:00
+@leo,Participando en la comunidad de desarrolladores open source,#tech #ai,2,2025-10-15 19:00:00
+@sofia,La inteligencia artificial está cambiando el mundo,#dev,54,2025-10-17 08:00:00
+@maria,Explorando nuevas tendencias tecnológicas para 2025,#ml,94,2025-10-10 05:00:00
+@ana,Comparando modelos de clasificación en scikit-learn,#nlp #dev #python,170,2025-10-18 09:00:00
+@leo,La inteligencia artificial está cambiando el mundo,#nlp,29,2025-10-04 23:00:00
+@sofia,Nuevo tutorial sobre análisis de datos con pandas y matplotlib,#nlp #ml,183,2025-10-11 06:00:00
+@leo,Participando en la comunidad de desarrolladores open source,#science #nlp #python,23,2025-10-21 13:00:00
+@juan,Aprendiendo #python con proyectos reales,#tech,197,2025-10-05 20:00:00
+@juan,Nuevo tutorial sobre análisis de datos con pandas y matplotlib,#science #dev #cloud,143,2025-10-01 03:00:00
+@lucas,Nuevo tutorial sobre análisis de datos con pandas y matplotlib,#python #tech #data,110,2025-10-05 01:00:00
+@juan,Explorando nuevas tendencias tecnológicas para 2025,#tech,53,2025-10-08 21:00:00
+@lucas,Explorando nuevas tendencias tecnológicas para 2025,#cloud #data #ml,41,2025-10-06 13:00:00
+@lucas,Nuevo tutorial sobre análisis de datos con pandas y matplotlib,#tech #cloud #ml,68,2025-10-06 22:00:00
+@lucas,Me encanta programar y descubrir nuevas librerías,#science,56,2025-10-07 14:00:00
+@juan,Participando en la comunidad de desarrolladores open source,#ml,6,2025-10-07 12:00:00
+@juan,Participando en la comunidad de desarrolladores open source,#nlp,89,2025-10-21 16:00:00
+@ana,Comparando modelos de clasificación en scikit-learn,#python #ai,66,2025-10-06 18:00:00
+@juan,Aprendiendo #python con proyectos reales,#trend,111,2025-10-12 23:00:00
+@juan,Me encanta programar y descubrir nuevas librerías,#dev #ai #cloud,147,2025-10-07 08:00:00
+@lucas,Me encanta programar y descubrir nuevas librerías,#dev,137,2025-10-07 11:00:00
+@ana,La inteligencia artificial está cambiando el mundo,#tech #trend #ai,184,2025-10-10 16:00:00
+@juan,Me encanta programar y descubrir nuevas librerías,#cloud #nlp,141,2025-10-05 06:00:00
+@ana,Me encanta programar y descubrir nuevas librerías,#data #nlp #cloud,140,2025-10-01 09:00:00
+@juan,Reflexiones sobre el futuro del machine learning,#trend #tech,119,2025-10-15 14:00:00
+@leo,Reflexiones sobre el futuro del machine learning,#science #data #ai,72,2025-10-17 21:00:00
+@leo,Los hashtags pueden ayudar a viralizar contenido en redes,#ai #ml,172,2025-10-10 07:00:00
+@maria,Nuevo tutorial sobre análisis de datos con pandas y matplotlib,#python,62,2025-10-16 19:00:00
+@lucas,¿Sabías que puedes analizar tus redes sociales con Python?,#trend #ml,183,2025-10-13 15:00:00
+@ana,Reflexiones sobre el futuro del machine learning,#python,192,2025-10-04 13:00:00
+@maria,Nuevo tutorial sobre análisis de datos con pandas y matplotlib,#dev #science #python,142,2025-10-08 03:00:00
+@ana,Nuevo tutorial sobre análisis de datos con pandas y matplotlib,#dev #trend,152,2025-10-11 14:00:00
+@sofia,Comparando modelos de clasificación en scikit-learn,#dev #science,40,2025-10-16 14:00:00
+@juan,Reflexiones sobre el futuro del machine learning,#nlp #dev #science,160,2025-10-08 08:00:00
+@ana,La inteligencia artificial está cambiando el mundo,#nlp #ml #trend,85,2025-10-11 17:00:00
+@lucas,Nuevo tutorial sobre análisis de datos con pandas y matplotlib,#ml,98,2025-10-05 22:00:00
+@maria,La inteligencia artificial está cambiando el mundo,#cloud #tech,138,2025-10-15 13:00:00
+@lucas,Reflexiones sobre el futuro del machine learning,#cloud #python,195,2025-10-19 12:00:00
+@ana,Aprendiendo #python con proyectos reales,#nlp #cloud,107,2025-10-18 23:00:00
+@leo,Comparando modelos de clasificación en scikit-learn,#ml #science #trend,69,2025-10-14 15:00:00
+@lucas,Me encanta programar y descubrir nuevas librerías,#cloud #data,119,2025-10-05 19:00:00
+@sofia,Aprendiendo #python con proyectos reales,#trend #python,21,2025-10-21 13:00:00
+@maria,¿Sabías que puedes analizar tus redes sociales con Python?,#python,66,2025-10-13 10:00:00
+@maria,¿Sabías que puedes analizar tus redes sociales con Python?,#tech #cloud,71,2025-10-14 08:00:00
+@lucas,¿Sabías que puedes analizar tus redes sociales con Python?,#dev,13,2025-10-12 07:00:00
+@leo,La inteligencia artificial está cambiando el mundo,#python #trend #ml,51,2025-10-01 19:00:00
+@maria,Reflexiones sobre el futuro del machine learning,#science,171,2025-10-04 18:00:00
+@maria,¿Sabías que puedes analizar tus redes sociales con Python?,#nlp #tech #data,155,2025-10-20 23:00:00
+@leo,La inteligencia artificial está cambiando el mundo,#nlp,27,2025-10-19 00:00:00
+@juan,Los hashtags pueden ayudar a viralizar contenido en redes,#cloud #trend #ml,19,2025-10-19 22:00:00
+@leo,Reflexiones sobre el futuro del machine learning,#nlp,175,2025-10-20 03:00:00
+@sofia,Aprendiendo #python con proyectos reales,#dev #cloud,169,2025-10-12 02:00:00
+@sofia,Explorando nuevas tendencias tecnológicas para 2025,#cloud,125,2025-10-04 13:00:00
+@juan,¿Sabías que puedes analizar tus redes sociales con Python?,#data #cloud #trend,187,2025-10-17 20:00:00
+@juan,Los hashtags pueden ayudar a viralizar contenido en redes,#science #trend #cloud,187,2025-10-19 08:00:00
+@juan,Reflexiones sobre el futuro del machine learning,#nlp,115,2025-10-08 14:00:00
+@sofia,Los hashtags pueden ayudar a viralizar contenido en redes,#cloud #tech #python,126,2025-10-11 05:00:00
+@ana,Reflexiones sobre el futuro del machine learning,#nlp #tech,71,2025-10-20 22:00:00
