@@ -35,6 +35,92 @@ Librerías utilizadas:
 - analyzer: Módulo propio con funciones de análisis y modelado.
 - ui_components: Módulo propio con componentes de UI reutilizables.
 ============================================
+FLUJO BÁSICO DEL MÓDULO (main.py):
+--------------------------------------------
+Este archivo es el PUNTO DE ENTRADA y COORDINADOR CENTRAL de toda la aplicación.
+Contiene la clase principal y orquesta todas las funcionalidades.
+
+¿Qué hace este módulo?
+CLASE PRINCIPAL: SocialTrendAnalyzer (hereda de tk.Tk)
+
+1. INICIALIZACIÓN (__init__):
+   - Configura ventana principal (título, tamaño, tema oscuro)
+   - Inicializa variables de estado (df, model, settings, assets)
+   - Aplica estilos TTK para interfaz moderna
+   - Construye la UI usando UIBuilder
+
+2. GESTIÓN DE ASSETS (_ensure_assets):
+   - Genera imágenes de tutorial si no existen
+   - Crea previews de CSV y métricas usando Matplotlib
+   - Almacena en directorio del usuario
+
+3. FLUJO DE CARGA DE DATOS (on_load_csv):
+   SECUENCIA:
+   a) Usuario selecciona archivo CSV mediante diálogo
+   b) Lee CSV con pandas
+   c) Valida estructura usando validate_dataset() de utils
+   d) Muestra errores si hay problemas
+   e) Procesa dataset: normaliza hashtags, genera labels si faltan
+   f) Actualiza combo de hashtags disponibles
+   g) Limpia modelo anterior (debe re-entrenar con nuevos datos)
+   h) Actualiza status bar
+
+4. MOSTRAR ESTADÍSTICAS (on_show_stats):
+   - Llama a compute_basic_stats() de analyzer
+   - Actualiza 3 tablas (Treeview) en la UI:
+     * Usuarios más activos
+     * Hashtags más populares
+     * Métricas de engagement
+   - Actualiza status bar
+
+5. GRÁFICO DE TENDENCIAS (on_plot_trend):
+   - Llama a compute_hashtag_trend() de analyzer
+   - Plotea líneas temporales para cada hashtag top
+   - Maneja foco en hashtag específico si está seleccionado
+   - Embebe gráfico Matplotlib en canvas de Tkinter
+   - Configura leyenda, grid, rotación de fechas
+
+6. FLUJO DE ENTRENAMIENTO (on_train_flow → _do_train):
+   SECUENCIA:
+   a) Verifica que haya dataset cargado
+   b) Muestra tutorial paso a paso (TutorialDialog) si usuario no lo desactivó
+   c) Ejecuta train_text_model() de analyzer
+   d) Guarda modelo entrenado en self.model
+   e) Muestra métricas formateadas en TextBox de UI
+   f) Actualiza status bar: "Modelo entrenado correctamente"
+
+7. PREDICCIÓN EN TIEMPO REAL (on_predict):
+   SECUENCIA:
+   a) Valida que el modelo esté entrenado
+   b) Lee inputs del usuario: texto, hashtags, likes
+   c) Valida que texto no esté vacío y likes sea numérico válido
+   d) Llama a predict_with_model() de analyzer
+   e) Muestra resultado: "Predicción: alta (confianza: 87%)"
+   f) Actualiza status bar
+
+8. FOCO EN HASHTAGS (on_focus_combo_change, on_focus_hashtag, clear_focus):
+   - Permite al usuario enfocar el gráfico en un hashtag específico
+   - Re-genera gráfico resaltando solo el hashtag seleccionado
+   - Útil para análisis detallado de tendencias individuales
+
+FUNCIÓN main():
+   - Punto de entrada del programa
+   - Instancia SocialTrendAnalyzer()
+   - Inicia loop de eventos de Tkinter
+   - Captura excepciones fatales y las muestra
+
+CONTRIBUCIÓN AL PROYECTO:
+Este módulo es el DIRECTOR DE ORQUESTA. Coordina todos los demás módulos:
+- Usa config para configuraciones
+- Usa utils para validaciones y preprocesamiento
+- Usa analyzer para cálculos y ML
+- Usa ui_components para construir interfaz
+- Maneja el flujo completo: carga → análisis → entrenamiento → predicción
+
+Es la implementación de la INTERFAZ GRÁFICA requerida por la consigna,
+permitiendo al usuario interactuar con todas las funcionalidades del proyecto
+de forma visual e intuitiva.
+============================================
 """
 
 import os

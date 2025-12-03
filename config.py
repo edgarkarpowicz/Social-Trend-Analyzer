@@ -28,6 +28,40 @@ y utilidades para cargar/guardar configuración de usuario.
 Librerías utilizadas:
 - os/json: Gestión de archivos de configuración.
 - typing: Tipado estático.
+============================================
+FLUJO BÁSICO DEL MÓDULO (config.py):
+--------------------------------------------
+Este archivo actúa como el CENTRO DE CONFIGURACIÓN de toda la aplicación.
+Su función principal es definir y gestionar todos los parámetros globales que
+utilizan los demás módulos.
+
+¿Qué hace este módulo?
+1. DEFINE CONSTANTES VISUALES: Paleta de colores moderna (PRIMARY, SECONDARY, ACCENT)
+   para mantener consistencia visual en toda la interfaz gráfica.
+
+2. CONFIGURA PARÁMETROS DE LA APLICACIÓN:
+   - WINDOW_CONFIG: Dimensiones y propiedades de la ventana principal
+   - MODEL_CONFIG: Hiperparámetros del modelo de Machine Learning (test_size, random_state, etc.)
+   - ANALYSIS_CONFIG: Parámetros para análisis estadístico (top_n, percentiles)
+   - PLOT_CONFIG: Configuraciones para gráficos de Matplotlib
+
+3. GESTIONA PERSISTENCIA DE CONFIGURACIÓN:
+   - load_user_settings(): Carga preferencias del usuario desde JSON
+   - save_user_settings(): Guarda preferencias (ej: "no mostrar tutorial")
+   - get_settings_path(): Retorna ruta del archivo de configuración
+
+4. DEFINE ESTILOS TTK: Configuraciones de estilo para widgets de la interfaz
+   (botones, frames, labels) con el tema oscuro moderno.
+
+5. ESTABLECE VALIDACIONES: Constantes como REQUIRED_COLUMNS, MIN_ROWS_REQUIRED
+   que otros módulos usan para validar datos.
+
+CONTRIBUCIÓN AL PROYECTO:
+Este módulo es FUNDAMENTAL porque centraliza toda la configuración, evitando
+"números mágicos" dispersos en el código. Cualquier cambio de parámetros
+(colores, tamaños, hiperparámetros del modelo) se hace aquí, facilitando
+el mantenimiento y la escalabilidad del proyecto.
+============================================
 """
 import logging
 import os

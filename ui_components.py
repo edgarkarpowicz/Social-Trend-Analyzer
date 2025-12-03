@@ -29,6 +29,110 @@ Librerías utilizadas:
 - tkinter/ttk: Construcción de interfaz.
 - matplotlib: Embedding de figuras en Tk.
 - pandas: Interacción con DataFrames en la UI.
+============================================
+FLUJO BÁSICO DEL MÓDULO (ui_components.py):
+--------------------------------------------
+Este archivo es el CONSTRUCTOR DE INTERFAZ del proyecto, conteniendo todos
+los componentes visuales reutilizables y la lógica de construcción de la UI.
+
+¿Qué hace este módulo?
+1. DIÁLOGO TUTORIAL (TutorialDialog):
+   - Ventana modal educativa que se muestra antes del entrenamiento
+   - Navegación paso a paso (5 pasos) con botones Anterior/Siguiente
+   - Muestra:
+     * Requisitos del dataset
+     * Qué aprende el modelo
+     * Cómo se valida
+     * Buenas prácticas
+     * Interpretación de resultados
+   - Incluye imágenes generadas (preview de CSV y métricas)
+   - Checkbox "No volver a mostrar" que persiste preferencia
+   - Se centra automáticamente sobre ventana padre
+
+2. CONSTRUCTOR DE UI PRINCIPAL (UIBuilder):
+   Clase responsable de construir TODA la interfaz gráfica.
+
+   a) build_main_ui():
+      - Orquesta construcción completa de la ventana
+      - Llama a métodos específicos para cada sección
+
+   b) _build_header():
+      - Crea barra superior con título y subtítulo
+      - Aplica estilos Header.TLabel y Subheader.TLabel
+
+   c) _build_toolbar():
+      - Crea barra de herramientas con scroll horizontal
+      - Contiene:
+        * Botones de acción (Cargar CSV, Estadísticas, Gráfico, Entrenar)
+        * Sección de predicción (Entry para texto/hashtags/likes, botón Predecir)
+        * Sección de foco en hashtags (Combobox, botón Limpiar)
+      - Usa Canvas + Scrollbar para manejar overflow horizontal
+      - Añade tooltips explicativos a cada botón
+
+   d) _build_main_panel():
+      - Panel central dividido en dos columnas:
+        * Izquierda: Notebook con pestañas (Usuarios, Hashtags, Métricas, Modelo)
+        * Derecha: Área de gráfico (canvas Matplotlib embebido)
+
+   e) _build_tabs():
+      - Crea 4 pestañas:
+        * TAB 1 - Usuarios: Treeview mostrando usuarios más activos
+        * TAB 2 - Hashtags: Treeview con hashtags populares (clickeable para foco)
+        * TAB 3 - Métricas: Treeview con estadísticas de engagement
+        * TAB 4 - Modelo: TextBox con métricas detalladas del ML
+
+   f) _build_plot_area():
+      - Crea Figure de Matplotlib
+      - Embebe en FigureCanvasTkAgg para integrarlo en Tkinter
+      - Configura fondo oscuro acorde al tema
+
+   g) _build_status_bar():
+      - Barra inferior con mensajes de estado
+      - Muestra: "Listo", "Dataset cargado: X filas", "Modelo entrenado", etc.
+
+3. TOOLTIP (Clase):
+   - Implementa tooltips (mensajes emergentes) al posar cursor sobre widgets
+   - Aparece tras 400ms de hover
+   - Se oculta automáticamente al quitar cursor
+   - Usa after() de Tkinter para scheduling
+
+4. UTILIDADES DE UI (UIUtils):
+   Métodos estáticos para operaciones comunes:
+   
+   - select_file(): Diálogo para seleccionar archivo CSV
+   - populate_tree(): Llena Treeview con datos de DataFrame
+   - clear_tree(): Limpia contenido de Treeview
+   - update_combobox_values(): Actualiza opciones de Combobox
+   - create_scrollable_tree(): Factory para crear Treeview con scrollbars
+   - add_tooltip(): Helper para añadir tooltip a cualquier widget
+   - format_tree_data(): Formatea valores numéricos para mostrar en tabla
+   - resize_treeview_columns(): Ajusta ancho de columnas automáticamente
+
+5. VALIDADORES DE UI (UIValidators):
+   Validaciones específicas para interacciones:
+   
+   - require_dataframe(): Verifica que haya dataset cargado antes de operar
+   - require_trained_model(): Verifica que el modelo esté entrenado antes de predecir
+   - validate_prediction_inputs(): Valida campos de entrada para predicción
+     * Texto no vacío
+     * Likes numérico válido
+     * Retorna tuple (is_valid, text, hashtags, likes)
+
+CONTRIBUCIÓN AL PROYECTO:
+Este módulo es el RESPONSABLE DE LA EXPERIENCIA DE USUARIO. Separa
+completamente la lógica de presentación (UI) de la lógica de negocio
+(análisis, ML). Permite que main.py se enfoque en coordinación mientras
+ui_components maneja todos los detalles visuales.
+
+Implementa un diseño MODULAR y REUTILIZABLE:
+- Cualquier componente (Tooltip, Tree, Dialog) puede usarse independientemente
+- Sigue patrón Builder para construcción incremental de UI compleja
+- Validadores centralizados evitan código duplicado
+
+Cumple con la consigna de "INCLUIR INTERFACE GRÁFICA" de forma profesional
+con tema oscuro moderno, tooltips, scroll, navegación por pestañas y
+experiencia pulida.
+============================================
 """
 import logging
 import tkinter as tk

@@ -29,6 +29,65 @@ Librerías utilizadas:
 - pandas/numpy: Procesamiento numérico y de datos.
 - scikit-learn: Vectorización TF-IDF, Regresión Logística y métricas.
 - utils: Composición de features de texto.
+============================================
+FLUJO BÁSICO DEL MÓDULO (analyzer.py):
+--------------------------------------------
+Este archivo es el CEREBRO ANALÍTICO del proyecto, encargado de procesar datos
+estadísticos y entrenar/usar el modelo de Machine Learning.
+
+¿Qué hace este módulo?
+1. ANÁLISIS ESTADÍSTICO BÁSICO (compute_basic_stats):
+   - Identifica usuarios más activos (por cantidad de posts)
+   - Calcula hashtags más populares
+   - Computa métricas de engagement usando NumPy (media, mediana, desviación)
+   - Crea un índice de engagement: likes / longitud_texto
+   - Retorna todo en DataFrames listos para mostrar en la UI
+
+2. ANÁLISIS DE TENDENCIAS TEMPORALES (compute_hashtag_trend):
+   - Agrupa posts por fecha y hashtag
+   - Crea una tabla pivot (fecha × hashtag) con conteos diarios
+   - Enfoca en los top K hashtags más usados
+   - Permite visualizar evolución temporal de tendencias
+
+3. PATRONES DE ENGAGEMENT (analyze_engagement_patterns):
+   - Analiza engagement por hora del día y día de la semana
+   - Calcula correlación entre longitud de texto y likes
+   - Identifica hashtags más efectivos (mayor promedio de likes)
+
+4. MACHINE LEARNING - ENTRENAMIENTO (train_text_model):
+   FLUJO COMPLETO:
+   a) Prepara features: combina texto + hashtags usando compose_text_features()
+   b) Split estratificado 75/25 (train/test) manteniendo balance de clases
+   c) Crea Pipeline: TF-IDF (1-2 grams, max 20k features) → Regresión Logística
+   d) Entrena modelo con class_weight='balanced' para manejar desbalance
+   e) Evalúa en test set: accuracy, classification report, confusion matrix
+   f) Formatea métricas para mostrar en UI de forma profesional
+
+5. MACHINE LEARNING - PREDICCIÓN (predict_with_model):
+   - Toma un nuevo texto + hashtags + likes
+   - Prepara el texto igual que en entrenamiento
+   - Usa el modelo entrenado para predecir: "alta" o "baja" relevancia
+   - Retorna predicción + nivel de confianza (probabilidad)
+
+6. FORMATEO DE MÉTRICAS (format_model_metrics):
+   - Genera reporte visual profesional con:
+     * Accuracy general
+     * Tabla de precision/recall/f1-score por clase
+     * Matriz de confusión
+     * Interpretación inteligente según performance
+     * Explicación didáctica de qué significa cada métrica
+
+7. ANÁLISIS DE FEATURES (analyze_model_features):
+   - Identifica las palabras/tokens más importantes para cada clase
+   - Extrae coeficientes del modelo para explicabilidad
+
+CONTRIBUCIÓN AL PROYECTO:
+Este módulo es el CORAZÓN del análisis de datos e inteligencia artificial.
+Transforma datos crudos en insights accionables (estadísticas, tendencias)
+y entrena un modelo NLP capaz de predecir relevancia de posts.
+Es donde se cumple la consigna principal: "entrenar un modelo de IA (NLP básico
+con TF-IDF + regresión logística) para clasificar publicaciones".
+============================================
 """
 
 import numpy as np

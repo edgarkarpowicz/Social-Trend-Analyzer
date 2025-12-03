@@ -28,6 +28,47 @@ conversión de fechas, generación de etiquetas y validaciones de entradas.
 Librerías utilizadas:
 - pandas/numpy: Limpieza y transformación de datos.
 - tkinter: Diálogos de error.
+============================================
+FLUJO BÁSICO DEL MÓDULO (utils.py):
+--------------------------------------------
+Este archivo es la CAJA DE HERRAMIENTAS del proyecto, conteniendo funciones
+auxiliares reutilizables para procesamiento y validación de datos.
+
+¿Qué hace este módulo?
+1. VALIDACIÓN COMPLETA DE DATASETS (validate_dataset):
+   - Verifica que el CSV tenga las columnas obligatorias (user, text, hashtags, likes, timestamp)
+   - Convierte tipos de datos (likes a numérico, timestamp a datetime)
+   - Elimina filas inválidas y reporta problemas encontrados
+   - Asegura que haya suficientes datos para entrenar el modelo
+
+2. NORMALIZACIÓN DE HASHTAGS (parse_hashtags_cell):
+   - Acepta múltiples formatos: "#python #ai", "['python','ai']", "python, ai"
+   - Convierte todo a listas de strings uniformes sin '#' y en minúsculas
+   - Maneja casos especiales y errores de formato
+
+3. GENERACIÓN AUTOMÁTICA DE ETIQUETAS (build_label_if_missing):
+   - Si el dataset no tiene columna 'label', la crea automáticamente
+   - Usa el percentil 70 de likes para clasificar en "alta" o "baja" relevancia
+   - Normaliza etiquetas existentes a formato estándar {'alta', 'baja'}
+
+4. PREPARACIÓN DE FEATURES PARA ML (compose_text_features):
+   - Combina texto + hashtags en un único string para alimentar TF-IDF
+   - Añade '#' a los hashtags para que el modelo los reconozca como tokens especiales
+
+5. VALIDACIONES DE ENTRADA DE USUARIO:
+   - validate_likes_input(): Valida que los likes sean números positivos
+   - validate_text_input(): Verifica que el texto no esté vacío
+
+6. UTILIDADES DE FORMATEO:
+   - format_number(), format_percentage(), truncate_text()
+   - Ayudan a mostrar datos de forma legible en la UI
+
+CONTRIBUCIÓN AL PROYECTO:
+Este módulo es el "preprocesador de datos" y "validador universal".
+Sin él, cada archivo tendría que reimplementar validaciones y normalizaciones,
+duplicando código. Garantiza que todos los datos fluyan limpios y consistentes
+desde la carga del CSV hasta el entrenamiento del modelo.
+============================================
 """
 
 import ast
